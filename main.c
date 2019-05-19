@@ -21,6 +21,7 @@ public:
     {
         key = newKey;
         datum = newDatum;
+        
     }
     ~DatumItem ()                        // destructor
     {
@@ -62,15 +63,15 @@ class ArrayStack
     // HINT: Add some fields here...
 public:  // for convenience, set everything public
 
-    int top = -1;
-    int arrayLen = 4;
-    int *stack;  // a pointer for basr address
+    int top;
+    int arrayLen;
+    DatumItem** stack;  // a pointer for basr address
     
     ArrayStack () // constructor
     { 
-        thitop = -1;  // -1 means nothing is in the stack
+        top = -1;  // -1 means nothing is in the stack  // the index of array will be top+1
         arrayLen = 4;  // default array length as 4
-        stack = new int[arrayLen] ;
+        stack = new DatumItem*[arrayLen] ;
     }
 
     // HINT: implement all of these...
@@ -87,7 +88,7 @@ public:  // for convenience, set everything public
 	        
             cout<<"Stack (size="<<arrayLen<<") is full. Create and use a double-size array(size="<<arrayLen*2<<")!"<<endl;
             
-            int * doubleSizeStack = new int[arrayLen * 2];
+            DatumItem ** doubleSizeStack = new DatumItem*[arrayLen * 2];
             
             cout << stack << endl;
             cout << doubleSizeStack << endl;
@@ -105,7 +106,7 @@ public:  // for convenience, set everything public
             
             
 	        
-	        stack[top] = datumItem.key; 
+	        stack[top+1] = &datumItem; 
 	        top++;
 	        
 	        cout << "new" << endl;
@@ -125,7 +126,7 @@ public:  // for convenience, set everything public
             }
 	        cout << endl;
 	        
-	        stack[top] = datumItem.key; 
+	        stack[top+1] = &datumItem; 
 	        top++;
 	        
 	        cout << "new" << endl;
@@ -187,16 +188,17 @@ int main ()
 {
     cout << "Hello World" << endl;
     
-    DatumItem* datumItem = new DatumItem(1, 'a');  // The asterisk is required.
+    DatumItem* datumItemPtr = new DatumItem(1, 'a');  // The asterisk is required.
     
 
     ArrayStack* arrayStack = new ArrayStack();  // The asterisk is required.
     
     arrayStack->pop();
     
-    for (int i = 0; i<16;i++)
+    for (int i = 0; i<17;i++)
     {
-        arrayStack->push(*datumItem);  // can't use arrayStack.push()
+        cout << "i = " << i << endl;
+        arrayStack->push(*datumItemPtr);  // can't use arrayStack.push()
     }
 
     
