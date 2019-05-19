@@ -152,6 +152,9 @@ public:  // for convenience, set everything public
         else
         {
             // return something normal
+            DatumItem* ptr = stack[top+1];
+            DatumItem datumItem = *ptr;
+            return datumItem;
         }
     }
     
@@ -195,7 +198,7 @@ int main ()
     
     arrayStack->pop();
     
-    for (int i = 0; i<17;i++)
+    for (int i = 0; i<8;i++)
     {
         cout << "i = " << i << endl;
         arrayStack->push(*datumItemPtr);  // can't use arrayStack.push()
