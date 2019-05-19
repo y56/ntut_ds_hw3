@@ -87,16 +87,15 @@ public:
 
 
     // HINT: implement all of these...
-    void push (DatumItem datumItem)	// Insert a data item to top. If the array is full, double its size.
+    void push (DatumItem datumItem)	// Insert a data item to top. 
     {
-        if (top == arrayLen - 1)
+        if (top == arrayLen - 1)  // If the array is full, double its size.
         {
-            cout << "Stack is full. Create and use a double-size array!";
+            cout << "Stack is full. Create and use a double-size array!" << endl;
             
-            arrayLen = arrayLen * 2;
             int * doubleSizeStack = new int[arrayLen * 2];
             
-            cout << stack;
+            cout << stack << endl;
             cout << doubleSizeStack << endl;
             
             for (int i = 0; i < arrayLen; i++)
@@ -104,16 +103,30 @@ public:
                 doubleSizeStack[i] = stack[i];
             }
             arrayLen = arrayLen * 2;  // update it
-            delete[] stack;             // delete the old
+            delete [] stack;             // delete the old
             stack = doubleSizeStack;    // update it  //  https://stackoverflow.com/questions/2857917/c-pointer-to-different-array
             
-            cout << stack;
+            cout << stack << endl;
             cout << doubleSizeStack << endl;
         } 
         else
         {
+	        cout << "old"  << endl;
+	        for (int i = 0; i < arrayLen; i++) 
+	        {
+                cout << stack[i];
+            }
+	        cout << endl;
+	        
+	        stack[top] = datumItem.key; 
 	        top++;
-	        stack[top] = datumItem.key;
+	        
+	        cout << "new" << endl;
+	        for (int i = 0; i < arrayLen; i++) 
+	        {
+                cout << stack[i];
+            }
+	        cout << endl;
         }
     }
     DatumItem pop ();		// Return a DataItem from top. If the array is less than half-full, half its size.
@@ -142,9 +155,16 @@ int main ()
 {
     cout << "Hello World" << endl;
     
+    DatumItem *datumItem = new DatumItem(1, 'a');  // The asterisk is required.
     
+    ArrayStack arrayStack;  // The asterisk is required.
     
-    ArrayStack* arrayStack = new ArrayStack();  // The asterisk is required.
+    arrayStack.push(*datumItem);  // can't use arrayStack.push()
+    arrayStack.push(*datumItem);
+    arrayStack.push(*datumItem);
+    arrayStack.push(*datumItem);
+    arrayStack.push(*datumItem);
+    arrayStack.push(*datumItem);
     
     cout << "Mom! I am here!" << endl;
     return 0;
