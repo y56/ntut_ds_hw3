@@ -9,7 +9,7 @@ class DataItem {
     
     public:
     
-    	int k; // Key
+        int k; // Key
     	char d; // satellite datum, assume each datum is only a char.
     
     public:
