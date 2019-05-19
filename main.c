@@ -5,24 +5,24 @@ using namespace std;
 #ifndef hw3Header
 #define hw3Header
 
-class DataItem
+class DatumItem
 {
 public:
 
-    int k;			                    // Key
-    char d;			                    // satellite datum, assume each datum is only a char.
+    int key;		                      // Key
+    char datum;			                    // satellite datum, assume each datum is only a char.
 
-    DataItem ()                         // constructor w/o input, using some default values 
+    DatumItem ()                         // constructor w/o input, using some default values 
     {				        
-        k = 0;
-        d = '0';
+        key = 0;
+        datum = '0';
     }
-    DataItem (int newKey, char newData)	// constructor w/ input
+    DatumItem (int newKey, char newDatum)	// constructor w/ input
     {
-        k = newKey;
-        d = newData;
+        key = newKey;
+        datum = newDatum;
     }
-    ~DataItem ()                        // destructor
+    ~DatumItem ()                        // destructor
     {
         // type 'int' argument given to 'delete', expected pointer 
         // ???
@@ -34,11 +34,11 @@ class ArrayQueue
     // HINT: Add some fields here...
 
     // HINT: implement all of these...
-  void enqueue (DataItem x);	// Insert a data item to front. If the array is full, double its size.
-  DataItem dequeue ();		    // Return a DataItem from tail. If the array is less than half-full, half its size.
+  void enqueue (DatumItem x);	// Insert a data item to front. If the array is full, double its size.
+  DatumItem dequeue ();		    // Return a DataItem from tail. If the array is less than half-full, half its size.
   bool isEmpty ();		        // Determine if the queue is empty
   bool isFull ();		        // Determine if the queue is full
-  DataItem getBack ();		    // Get the last data item of the queue without removing it
+  DatumItem getBack ();		    // Get the last data item of the queue without removing it
   int getSize ();		        // Return the current number of data items in the queue
   int getCapacity ();		    // Return the size of the array that keeps the data items (must be at least as large as the number of data items in the queue)
 };
@@ -48,11 +48,11 @@ class ArrayCircularQueue
     // HINT: Add some fields here...
 
     // HINT: implement all of these...
-    void enqueue (DataItem x);	// Insert a data item to front. If the array is full, double its size.
-    DataItem dequeue ();		// Return a DataItem from tail. If the array is less than half-full, half its size.
+    void enqueue (DatumItem x);	// Insert a data item to front. If the array is full, double its size.
+    DatumItem dequeue ();		// Return a DataItem from tail. If the array is less than half-full, half its size.
     bool isEmpty ();		    // Determine if the queue is empty
     bool isFull ();		        // Determine if the queue is full
-    DataItem getBack ();		// Get the last data item of the queue without removing it
+    DatumItem getBack ();		// Get the last data item of the queue without removing it
     int getSize ();		        // Return the current number of data items in the queue
     int getCapacity ();		    // Return the size of the array that keeps the data items (must be at least as large as the number of data items in the queue)
 };
@@ -61,32 +61,64 @@ class ArrayStack
 {   // Please implement a stack using an array...
     // HINT: Add some fields here...
 public:
-    int top = 0;
+
+    int top;
+    int arrayLen;
+    int stack[];
     
-    ArrayStack (int arrayLen)  // construct array 
-    {
-        int stack[arrayLen] = { };
-        top = 0;
-    }
+    ArrayStack () // constructor
+    { 
+        int top = 0;
+        arrayLen = 4;  // default array length as 8
+        int *stack = new int[arrayLen] ;
+        
+        /* test
+        for (int i = 0; i < arrayLen; i++) {
+            stack[i] = 3;
+        }
+        
+        cout << stack << endl;
+        
+        for (int i = 0; i < arrayLen; i++) {
+            cout << stack[i]  << endl;
+        } */
+    };
 
 
 
     // HINT: implement all of these...
-    void push (DataItem dataItem)	// Insert a data item to top. If the array is full, double its size.
+    void push (DatumItem datumItem)	// Insert a data item to top. If the array is full, double its size.
     {
-        if (top == n - 1)
+        if (top == arrayLen - 1)
         {
-            cout << "Stack is full. Overflow condition! Shall double the array!";
-        }
+            cout << "Stack is full. Create and use a double-size array!";
+            
+            arrayLen = arrayLen * 2;
+            int * doubleSizeStack = new int[arrayLen * 2];
+            
+            cout << stack;
+            cout << doubleSizeStack << endl;
+            
+            for (int i = 0; i < arrayLen; i++)
+            {
+                doubleSizeStack[i] = stack[i];
+            }
+            arrayLen = arrayLen * 2;  // update it
+            delete[] stack;             // delete the old
+            stack = doubleSizeStack;    // update it  //  https://stackoverflow.com/questions/2857917/c-pointer-to-different-array
+            
+            cout << stack;
+            cout << doubleSizeStack << endl;
+        } 
         else
         {
 	        top++;
-	        stack[top] = key;
+	        stack[top] = datumItem.key;
         }
     }
-    DataItem pop ();		// Return a DataItem from top. If the array is less than half-full, half its size.
+    DatumItem pop ();		// Return a DataItem from top. If the array is less than half-full, half its size.
     bool isEmpty ();		// Determine if the stack is empty
-    DataItem getTop ();		// Get the last data item of the stack without removing it
+    DatumItem getTop ();		// Get the last data item of the stack without removing it
     int getSize ();		    // Return size of the array that keeps the data items (must be at least as large as the number of data items in the stack)
 };
 
@@ -96,10 +128,10 @@ class TwoStackQueue
 
         // HINT: implement all of these...
     void enqueue ();
-    DataItem dequeue ();
+    DatumItem dequeue ();
     bool isEmpty ();
     bool isFull ();
-    DataItem getBack ();
+    DatumItem getBack ();
     int getSize ();
 };
 
@@ -108,7 +140,12 @@ class TwoStackQueue
 
 int main ()
 {
-    cout << "Hello World";
-
+    cout << "Hello World" << endl;
+    
+    
+    
+    ArrayStack* arrayStack = new ArrayStack();  // The asterisk is required.
+    
+    cout << "Mom! I am here!" << endl;
     return 0;
 }
