@@ -4,8 +4,8 @@
 ##  Creat an object
 ```C++
 #include <iostream>
-#include <string>
 class DatumItem {
+public:
     int key;		                            // Key
     char datumChar;			                    // satellite datum, assume each datum is only a char.
     DatumItem () {                              // constructor w/o input, using some default values 
