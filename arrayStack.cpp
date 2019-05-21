@@ -5,21 +5,18 @@ class DatumItem
 {
 public:
 
-    int key;		                        // Key
-    char datumChar;			                // satellite datum, assume each datum is only a char.
+    int key = -1;		                        // Key, a positive int
+    char datumChar = '\0';			            // satellite datum, assume each datum is only a char.
 
-    DatumItem ()                            // constructor w/o input, using some default values 
-    {				        
-        key = -1;
-        datumChar = '\0';
-    }
-    DatumItem (int newKey, char newDatum)	// constructor with input
+    DatumItem ()                                // constructor w/o input, using some default values 
+    {}
+    DatumItem (int newKey, char newDatumChar)	// constructor with input
     {
         key = newKey;
-        datumChar = newDatum;
+        datumChar = newDatumChar;
     }
     ~DatumItem ()                           // destructor  // not sure what to do
-    {   }; 
+    {}; 
 };
 
 class ArrayStack
@@ -44,6 +41,7 @@ public:  // for convenience, set everything public
                                     // Perhaps a hash table?
                                     // Anyway, I will use the address of each `DatumItem` object as an element in an array.
     {
+cout <<"!!!!!!!!!!!!!!!!!!!!!!!!!!!"<< &datumItem;
         if (top == arrayLen - 1)  // If the array is full, double its size.
         {
             cout << "old"  << endl;
@@ -60,13 +58,13 @@ public:  // for convenience, set everything public
             cout << stack << endl;
             cout << doubleSizeStack << endl;
             
-            for (int i = 0; i < arrayLen; i++)
+            for (int i = 0; i < arrayLen; i++)  // copy from the old
             {
                 doubleSizeStack[i] = stack[i];
             }
-            arrayLen = arrayLen * 2;  // update it
+            arrayLen = arrayLen * 2;     // update it
             delete [] stack;             // delete the old  // use delete [] instead of delete
-            stack = doubleSizeStack;    // update it  //  https://stackoverflow.com/questions/2857917/c-pointer-to-different-array
+            stack = doubleSizeStack;     // update it       //  https://stackoverflow.com/questions/2857917/c-pointer-to-different-array
             
             cout << stack << endl;
             cout << doubleSizeStack << endl;
@@ -225,21 +223,49 @@ int main ()
     // test pop on empty ArrayStack
     DatumItem catchedDataItem = arrayStackPtr->pop();
     
-    // creat multiple datumItem's for testing `push`
-// TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO
-    DatumItem* datumItemPtrArray[9];
-    for (int i = 0; i<9;i++)
-    {
-        datumItemPtrArray[i] = new DatumItem(i+3, (char)('c'+3));  // success  // check the contents of these nodes
-    }
+    // creat multiple datumItems for testing `push`
+
+    DatumItem datumItem3 = DatumItem(3, 'c'); 
+    DatumItem datumItem4 = DatumItem(4, 'd'); 
+    DatumItem datumItem5 = DatumItem(5, 'e'); 
+    DatumItem datumItem6 = DatumItem(6, 'f'); 
+    DatumItem datumItem7 = DatumItem(7, 'g'); 
+    DatumItem datumItem8 = DatumItem(8, 'h'); 
+    DatumItem datumItem9 = DatumItem(9, 'i'); 
+    DatumItem datumItem10 = DatumItem(10, 'j'); 
+    DatumItem datumItem11 = DatumItem(11, 'k'); 
+    cout << datumItem3.key << datumItem3.datumChar << &datumItem3 << endl;
+    cout << datumItem4.key << datumItem4.datumChar << &datumItem4 << endl;
+    cout << datumItem5.key << datumItem5.datumChar << &datumItem5 << endl;
+    cout << datumItem6.key << datumItem6.datumChar << &datumItem6 << endl;
+    cout << datumItem7.key << datumItem7.datumChar << &datumItem7 << endl;
+    cout << datumItem8.key << datumItem8.datumChar << &datumItem8 << endl;
+    cout << datumItem9.key << datumItem9.datumChar << &datumItem9 << endl;
+    cout << datumItem10.key << datumItem10.datumChar << &datumItem10 << endl;
+    cout << datumItem11.key << datumItem11.datumChar << &datumItem11 << endl;
+
     
     // test push on ArrayStack  // Test doubling size
-    for (int i = 0; i<9;i++)
-    {
-        cout << "i = " << i << endl;
-        arrayStackPtr->push(*datumItemPtr1);  // can't use arrayStackPtr.push()
-        cout << "test getSize ==> "<< arrayStackPtr->getSize() << endl;
-    }
+
+    arrayStackPtr->push(  datumItem3  );  // can't use arrayStackPtr.push()
+    cout << "test getSize ==> "<< arrayStackPtr->getSize() << endl;
+    arrayStackPtr->push(  datumItem4  );  // can't use arrayStackPtr.push()
+    cout << "test getSize ==> "<< arrayStackPtr->getSize() << endl;
+    arrayStackPtr->push(  datumItem5  );  // can't use arrayStackPtr.push()
+    cout << "test getSize ==> "<< arrayStackPtr->getSize() << endl;
+    arrayStackPtr->push(  datumItem6  );  // can't use arrayStackPtr.push()
+    cout << "test getSize ==> "<< arrayStackPtr->getSize() << endl;
+    arrayStackPtr->push(  datumItem7  );  // can't use arrayStackPtr.push()
+    cout << "test getSize ==> "<< arrayStackPtr->getSize() << endl;
+    arrayStackPtr->push(  datumItem8  );  // can't use arrayStackPtr.push()
+    cout << "test getSize ==> "<< arrayStackPtr->getSize() << endl;
+    arrayStackPtr->push(  datumItem9  );  // can't use arrayStackPtr.push()
+    cout << "test getSize ==> "<< arrayStackPtr->getSize() << endl;
+    arrayStackPtr->push(  datumItem10  );  // can't use arrayStackPtr.push()
+    cout << "test getSize ==> "<< arrayStackPtr->getSize() << endl;
+    arrayStackPtr->push(  datumItem11  );  // can't use arrayStackPtr.push()
+    cout << "test getSize ==> "<< arrayStackPtr->getSize() << endl;
+
     
     // test pop on  ArrayStack  // Test halving size
     for (int i = 0; i<9;i++)
@@ -254,3 +280,4 @@ int main ()
     cout << "Mom! I am here!" << endl;
     return 0;
 } 
+
