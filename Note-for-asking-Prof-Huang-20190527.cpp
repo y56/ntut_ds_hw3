@@ -85,10 +85,10 @@ int main ()
     
     cout << endl << "***** print the addresses of datumItems:" << endl<<endl;
     
-    cout << datumItem3.key << datumItem3.datumChar << &datumItem3 << endl;
-    cout << datumItem4.key << datumItem4.datumChar << &datumItem4 << endl;
-    cout << datumItem5.key << datumItem5.datumChar << &datumItem5 << endl;
-    cout << datumItem6.key << datumItem6.datumChar << &datumItem6 << endl;
+    cout << datumItem3.key <<"  "<< datumItem3.datumChar <<"  "<< &datumItem3 << endl;
+    cout << datumItem4.key <<"  "<< datumItem4.datumChar <<"  "<< &datumItem4 << endl;
+    cout << datumItem5.key <<"  "<< datumItem5.datumChar <<"  "<< &datumItem5 << endl;
+    cout << datumItem6.key <<"  "<< datumItem6.datumChar <<"  "<< &datumItem6 << endl;
 
 
     
