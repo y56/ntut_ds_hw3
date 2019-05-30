@@ -1,23 +1,23 @@
 ***** Use constructor
 
-content of datumItemPtr2:    0x32794a0
-address of datumItem2:       0x735f29d96720
+content of datumItemPtr2:    0x2120a30
+address of datumItem2:       0x725c4abda790
 
 ***** Use destructor
 
-content of datumItemPtr2:    0x32794a0
-address of datumItem2:       0x735f29d96720
+content of datumItemPtr2:    0x2120a30
+address of datumItem2:       0x725c4abda790
 
 ***** print the addresses of datumItems:
 
-3c0x735f29d96730
-4d0x735f29d96740
-5e0x735f29d96750
-6f0x735f29d96760
+3  c  0x725c4abda7a0
+4  d  0x725c4abda7b0
+5  e  0x725c4abda7c0
+6  f  0x725c4abda7d0
 
 ***** start pushing and printing my stack:
 
-0x735f29d96770 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 
-0x735f29d96770 | 0x735f29d96770 | 0 | 0 | 0 | 0 | 0 | 0 | 
-0x735f29d96770 | 0x735f29d96770 | 0x735f29d96770 | 0 | 0 | 0 | 0 | 0 | 
-0x735f29d96770 | 0x735f29d96770 | 0x735f29d96770 | 0x735f29d96770 | 0 | 0 | 0 | 0 | 
+0x725c4abda7e0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 
+0x725c4abda7e0 | 0x725c4abda7e0 | 0 | 0 | 0 | 0 | 0 | 0 | 
+0x725c4abda7e0 | 0x725c4abda7e0 | 0x725c4abda7e0 | 0 | 0 | 0 | 0 | 0 | 
+0x725c4abda7e0 | 0x725c4abda7e0 | 0x725c4abda7e0 | 0x725c4abda7e0 | 0 | 0 | 0 | 0 | 
