@@ -1,0 +1,23 @@
+***** Use constructor
+
+content of datumItemPtr2:    0x32794a0
+address of datumItem2:       0x735f29d96720
+
+***** Use destructor
+
+content of datumItemPtr2:    0x32794a0
+address of datumItem2:       0x735f29d96720
+
+***** print the addresses of datumItems:
+
+3c0x735f29d96730
+4d0x735f29d96740
+5e0x735f29d96750
+6f0x735f29d96760
+
+***** start pushing and printing my stack:
+
+0x735f29d96770 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 
+0x735f29d96770 | 0x735f29d96770 | 0 | 0 | 0 | 0 | 0 | 0 | 
+0x735f29d96770 | 0x735f29d96770 | 0x735f29d96770 | 0 | 0 | 0 | 0 | 0 | 
+0x735f29d96770 | 0x735f29d96770 | 0x735f29d96770 | 0x735f29d96770 | 0 | 0 | 0 | 0 | 
